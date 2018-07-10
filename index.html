@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lesson 10</title>
+</head>
+<body>
+	<style type="text/css">
+		#app{
+			display: flex;
+			flex-direction: row;
+			position: absolute;
+
+		}
+		#resultSquare{
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+			margin: 5px;
+			box-sizing: border-box;
+		}
+		.controlPanel{
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+			margin: 5px;
+			position: relative;
+		}
+		#dot{
+			width: 2px;
+			height: 2px;
+			background-color: black;
+			position: relative;
+
+		}
+	</style>
+
+	<div id="app">
+	<div id="resultSquare">
+		<div id="dot"></div>
+	</div>
+	<div class="controlPanel" data-toggle='controlPanel'></div>
+	</div>
+
+	<script type="text/javascript">
+		
+	let cursorPosition = document.querySelector("[data-toggle='controlPanel']");
+	let resultSquare = document.querySelector('#resultSquare');
+    let dot = document.querySelector('#dot');
+
+    (function(el) {
+    	X = el.offsetLeft;
+    	Y = el.offsetTop;
+    }(cursorPosition));
+
+	function myEvent(ev) {
+    	dot.style.marginLeft = ev.clientX - X + 'px';
+    	dot.style.marginTop = ev.clientY - Y + 'px';
+    };
+
+    cursorPosition.addEventListener('mousemove', myEvent)
+
+	
+
+
+</script>
+</body>
+</html>
